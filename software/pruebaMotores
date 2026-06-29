@@ -1,0 +1,99 @@
+int IN1 = 2;
+int IN2 = 3;
+int IN3 = 4;
+int IN4 = 5;
+
+int ENA = 9;
+int ENB = 10;
+
+int velocidad = 60; // 0 a 255
+
+void setup() {
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+
+  pinMode(ENA, OUTPUT);
+  pinMode(ENB, OUTPUT);
+}
+
+void loop() {
+  avanzar();
+  delay(2000);
+
+  detener();
+  delay(1000);
+
+  retroceder();
+  delay(2000);
+
+  detener();
+  delay(1000);
+
+  girarDerecha();
+  delay(1000);
+
+  detener();
+  delay(1000);
+
+  girarIzquierda();
+  delay(1000);
+
+  detener();
+  delay(2000);
+}
+
+void avanzar() {
+  analogWrite(ENA, velocidad);
+  analogWrite(ENB, velocidad);
+
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void retroceder() {
+  analogWrite(ENA, velocidad);
+  analogWrite(ENB, velocidad);
+
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
+
+void girarDerecha() {
+  analogWrite(ENA, velocidad);
+  analogWrite(ENB, velocidad);
+
+  digitalWrite(IN1, HIGH);
+  digitalWrite(IN2, LOW);
+
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
+}
+
+void girarIzquierda() {
+  analogWrite(ENA, velocidad);
+  analogWrite(ENB, velocidad);
+
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
+
+  digitalWrite(IN3, HIGH);
+  digitalWrite(IN4, LOW);
+}
+
+void detener() {
+  analogWrite(ENA, 0);
+  analogWrite(ENB, 0);
+
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, LOW);
+}
